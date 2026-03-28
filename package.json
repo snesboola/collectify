@@ -1,0 +1,27 @@
+{
+  "name": "collectify",
+  "version": "1.0.0",
+  "description": "A Spotify plugin that automatically adds every song you don't skip into a playlist, so you don't have to interrupt your listening session to add a new song to your playlist.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snesboola/collectify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/snesboola/collectify/issues"
+  },
+  "homepage": "https://github.com/snesboola/collectify#readme",
+  "dependencies": {
+    "axios": "^1.14.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  }
+}
