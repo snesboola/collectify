@@ -1,0 +1,1 @@
+A Spotify plugin that automatically adds every song you don't skip into a playlist, so you don't have to interrupt your listening session to add a new song to your playlist.
