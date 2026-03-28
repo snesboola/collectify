@@ -73,8 +73,7 @@ async function updateUserMode(userId, mode) {
     );
 }
  
-// If you switch modes, your old session playlist gets cleared so a fresh one gets created.
-
+//remove old playlist from db when user changes mode. 
 async function updateSessionPlaylist(userId, playlistId) {
     await pool.query(
       'UPDATE users SET session_playlist_id = $1 WHERE id = $2',

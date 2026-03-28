@@ -61,4 +61,3 @@ async function refreshAccessToken(userId, refreshToken) {
     await storage.updateUserToken(userId, newToken);
     return newToken;
 }
-
