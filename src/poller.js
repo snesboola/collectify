@@ -1,5 +1,6 @@
 const axios = require('axios');
 const detector = require('./detector');
+console.log('detector loaded:', detector);
 const playlists = require('./playlists');
 const { refreshAccessToken } = require('./auth');
 const storage = require('./storage');
@@ -12,6 +13,7 @@ async function poll(userId) {
     if (!user) return;
   
     try {
+      console.log(`[${userId}] Polling with token: ${user.access_token.slice(0, 20)}...`);  
       const res = await axios.get(
         'https://api.spotify.com/v1/me/player/currently-playing',
         {
@@ -19,7 +21,7 @@ async function poll(userId) {
           validateStatus: (s) => s < 500,
         }
       );
-
+      console.log(`[${userId}] Spotify response status: ${res.status}`);
       const current = res.status === 200 ? res.data : null;
     const fullListen = detector.update(userId, current);
 
@@ -38,13 +40,14 @@ async function poll(userId) {
     }
   } catch (err) {
     if (err.response?.status === 401) {
-      console.log(`[${userId}] Token expired, refreshing...`);
-      const user = await storage.getUser(userId);
-      if (user?.refresh_token) {
+        console.log(`[${userId}] Token expired, refreshing...`);
+        const user = await storage.getUser(userId);
+    if (user?.refresh_token) {
         await refreshAccessToken(userId, user.refresh_token);
       }
     } else {
-      console.error(`[${userId}] Poll error:`, err.message);
+        console.error(`[${userId}] Full error:`, err.response?.data);
+        console.error(`[${userId}] Poll error:`, err.message);
     }
   }
 }

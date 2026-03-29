@@ -8,6 +8,7 @@ const SCOPES = [
     'playlist-modify-public',
     'playlist-modify-private',
     'playlist-read-private',
+    'user-read-email',
 ].join(' ');
 
 const AUTH_HEADER = 'Basic ' + Buffer.from(
@@ -61,3 +62,5 @@ async function refreshAccessToken(userId, refreshToken) {
     await storage.updateUserToken(userId, newToken);
     return newToken;
 }
+
+module.exports = { getLoginUrl, exchangeCode, refreshAccessToken };
