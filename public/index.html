@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collectify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #1DB954;
+      --black: #0a0a0a;
+      --surface: #181818;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0ede6;
+      --muted: rgba(240,237,230,0.45);
+    }
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--black);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: -20%; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(29,185,84,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .card {
+      position: relative; z-index: 1;
+      max-width: 440px; width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3rem 2.5rem;
+      background: var(--surface);
+      animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem; line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+    h1 em { font-style: italic; color: var(--green); }
+    .desc {
+      font-size: 0.8rem; color: var(--muted);
+      line-height: 1.7; margin: 1.5rem 0 2rem;
+      border-left: 2px solid var(--border);
+      padding-left: 1rem;
+    }
+    .features {
+      list-style: none; margin-bottom: 2.5rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .features li {
+      font-size: 0.75rem; color: var(--muted);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .features li::before {
+      content: ''; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--green); flex-shrink: 0;
+    }
+    .btn {
+      display: flex; align-items: center;
+      justify-content: center; gap: 0.75rem;
+      width: 100%; padding: 1rem;
+      background: var(--green); color: #000;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border: none; border-radius: 2px;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #1ed760; }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .footer {
+      margin-top: 1.5rem; font-size: 0.65rem;
+      color: var(--muted); text-align: center; line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <p class="eyebrow">collectify</p>
+    <h1>Songs you <em>actually</em> loved.</h1>
+    <p class="desc">
+      Tracks every song you listen to without skipping. When you reach 90%,
+      it's automatically saved to your Spotify playlist — no tapping required.
+    </p>
+    <ul class="features">
+      <li>Works on any device — phone, laptop, speaker</li>
+      <li>Four modes: all-time, daily, session, by genre</li>
+      <li>Runs silently in the background</li>
+      <li>Never stores your passwords or payment info</li>
+    </ul>
+    <a class="btn" href="/login">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+      </svg>
+      Continue with Spotify
+    </a>
+    <p class="footer">
+      Requires Spotify Premium · Your data stays private<br>
+      Only counts listens past 90% of track duration
+    </p>
+  </div>
+</body>
+</html>
